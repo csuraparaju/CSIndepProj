@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dementia Detection Development Server - question three</title>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+
+</head>
+<body>
+     <div class ="centerDivHeader">
+        <h2>This is the third question in the MMSE (Mini Mental Status Examination). There is no file
+        upload for this part of the exam. All you have to do is learn the name of these three objects.
+        Object one is a pair of scissors, object two are some legos, and object three are some rocks. 
+        Click "Next" once you have memorized these objects. </h2>
+        <div class ="centerDivHeader">
+            <p style="text-align:center">Object 1</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Pair_of_scissors_with_black_handle%2C_2015-06-07.jpg" alt="Pair of Scissors" style="width:25vw;height:25vw; display: block; margin-left: auto; margin-right: auto;">
+        </div>
+        <div class ="centerDivHeader">
+            <p style="text-align:center">Object 2</p>
+            <img src="https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555282741/shape/mentalfloss/legos-hero.png" alt="Some legos" style="width:25vw;height:20vw;display: block; margin-left: auto; margin-right: auto">
+        </div>
+        <div class ="centerDivHeader">
+            <p style="text-align:center">Object 3</p>
+            <img src="https://images-na.ssl-images-amazon.com/images/I/81W%2BRih-KcL._AC_SL1500_.jpg" alt="Pair of Scissors" style="width:25vw;height:20vw;display: block; margin-left: auto; margin-right: auto">
+        </div>
+    </div>
+    <br>
+    </br>
+    <div class = "centerDivForm">
+        <form method=POST enctype=multipart/form-data action ="question4">
+            <br>
+            <input type=submit value="Next">
+        </form>
+    </div>
+    
+    
+    
+</body>
+
+</html>

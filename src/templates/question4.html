@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dementia Detection Development Server - question four</title>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+<body>
+     <div class ="centerDivHeader">
+        <h2>This is the fourth question in the modefied MMSE (Mini Mental Status Examination). In order to proceed, 
+        record an audio snippet of you counting backwards from 100 to 72 by increments of 7.</h2>
+ 
+    </div>
+    <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>Upload the speech recording below. Ensure that the files are in the
+        .wav audio format.</h2>
+    </div>
+    <br>
+    </br>
+    <div class = "centerDivForm">
+        <p>Question 4</p>
+        <form method=POST enctype=multipart/form-data action ="question4Score">
+            <input type=file name=myFile>
+            <br>
+            <input type=submit>
+        </form>
+    </div>
+    
+        <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>Once you press submit, a loading animation will appear in the browser's top bar.
+        This means that the program is analyzing the .wav file and is determining a score for 
+        this question. Please be patient as this process may take up to a minute. I apologize
+        for the long load times.</h2>
+    </div>
+    
+
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dementia Detection Development Server - question six</title>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+
+</head>
+<body>
+     <div class ="centerDivHeader">
+        <h2>This is the sixth question in the MMSE (Mini Mental Status Examination). Below
+        are images of two common objects. Please record an audio snippet of you naming
+        each one. </h2>
+        <div class ="centerDivHeader">
+            <p style="text-align:center">Object 1</p>
+            <img src="https://www.dalvey.com/media/catalog/product/t/o/torque_caelus_wrist_watch_white--03360_.jpg?auto=webp&format=pjpg&width=640&fit=cover" style="width:25vw;height:25vw; display: block; margin-left: auto; margin-right: auto;">
+        </div>
+        <div class ="centerDivHeader">
+            <p style="text-align:center">Object 2</p>
+            <img src="https://34t9wx3d3efh36333w49fxon-wpengine.netdna-ssl.com/wp-content/uploads/Single-Pencil-1-1030x488.jpg"  style="width:25vw;height:20vw;display: block; margin-left: auto; margin-right: auto">
+        </div>
+    </div>
+    <br>
+    </br>
+     <div class ="centerDivHeader">
+        <h2>Upload the speech recording below. Ensure that the files are in the
+        .wav audio format.</h2>
+    </div>
+    <br>
+    </br>
+    <div class = "centerDivForm">
+        <p>Question 6</p>
+        <form method=POST enctype=multipart/form-data action ="question6Score">
+            <input type=file name=myFile>
+            <br>
+            <input type=submit>
+        </form>
+    </div>
+    <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>Once you press submit, a loading animation will appear in the browser's top bar.
+        This means that the program is analyzing the .wav file and is determining a score for 
+        this question. Please be patient as this process may take up to a minute. I apologize
+        for the long load times.</h2>
+    </div>
+    
+    
+</body>
+
+</html>
+
+

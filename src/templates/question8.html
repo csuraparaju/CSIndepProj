@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dementia Detection Development Server - question eight</title>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+
+</head>
+<body>
+     <div class ="centerDivHeader">
+        <h2>This is the last question in the MMSE (Mini Mental Status Examination). Please record an audio snippet
+        of you saying a complete sentence.</h2>
+        
+    <br>
+    </br>
+     <div class = "centerDivForm">
+        <p>Question 8</p>
+        <form method=POST enctype=multipart/form-data action ="question8Score">
+            <input type=file name=myFile>
+            <br>
+            <input type=submit>
+        </form>
+    </div>
+    <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>Once you press submit, a loading animation will appear in the browser's top bar.
+        This means that the program is analyzing the .wav file and is determining a score for 
+        this question. Please be patient as this process may take up to a minute. I apologize
+        for the long load times.</h2>
+    </div>
+    
+    
+</body>
+
+</html>

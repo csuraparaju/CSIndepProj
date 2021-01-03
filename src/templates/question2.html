@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dementia Detection Development Server - question two</title>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+
+</head>
+<body>
+     <div class ="centerDivHeader">
+        <h2>This is the second question in the modefied MMSE (Mini Mental Status Examination). Similar to question 1,
+        this question also evaluates how aware you are of your surroundings. In order to proceed, please record an audio snippet 
+        answering the following questions in roughly one sentence. Then, upload it in the 
+        file uploader below.</h2>
+        <div class ="flex-container">
+        <ui>
+            <li>What state are you in right now?</li>
+            <li>What is your town or city's name?</li>
+            <li>What is your street address?</li>
+        </ui>
+        </div>
+    </div>
+    <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>However, this feature is still under construction. Please don't record 
+        any media files. Simply, hit submit to move on.</h2>
+    </div>
+    
+    <br>
+    </br>
+    
+    <div class = "centerDivForm">
+        <p>Question 2</p>
+        <form method=POST enctype=multipart/form-data action ="question2Score">
+            <input type=submit value="Next">
+        </form>
+    </div>
+    
+    <br>
+    
+    
+</body>
+
+</html>

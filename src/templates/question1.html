@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dementia Detection Development Server - question one</title>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+     <div class ="centerDivHeader">
+        <h2>This is the first question in the MMSE (Mini Mental Status Examination). This question 
+        evaluates how aware you are of your surroundings. In order to proceed, please record an audio
+        snippet answering the following questions in roughly one sentence. Then, upload it in the 
+        file uploader below.</h2>
+        <div class ="flex-container">
+        <ui>
+            <li>What is the current year?</li>
+            <li>What is the current date?</li>
+            <li>What is the current month?</li>
+            <li>What is the current season?</li>
+            
+        </ui>
+        </div>
+    </div>
+    <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>Upload the speech recording below. Ensure that the files are in the
+        .wav audio format.</h2>
+    </div>
+    <br>
+    </br>
+    <div class = "centerDivForm">
+        <p>Question 1</p>
+        <form method=POST enctype=multipart/form-data action ="question1Score">
+            <input type=file name=myFile>
+            <br>
+            <input type=submit>
+        </form>
+    </div>
+    
+        <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>Once you press submit, a loading animation will appear in the browser's top bar.
+        This means that the program is analyzing the .wav file and is determining a score for 
+        this question. Please be patient as this process may take up to a minute. I apologize
+        for the long load times.</h2>
+    </div>
+    
+    <br>
+    </br>
+    
+    
+    
+</body>
+
+</html>

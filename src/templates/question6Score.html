@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dementia Detection Development Server - question six score</title>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>Your score for question six is {{variable}} </h2>
+    </div>
+    <br>
+    </br>
+    <div class = "centerDivForm">
+        <form method=POST enctype=multipart/form-data action ="question7">
+            <br>
+            <input type=submit value ="Next">
+        </form>
+    </div>
+    
+    <br>
+    
+    
+</body>
+
+</html>
