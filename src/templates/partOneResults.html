@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dementia Detection Development Server - question seven score</title>
+    <title>Dementia Detection Development Server - part one score</title>
 
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 </head>
@@ -10,12 +10,13 @@
     <br>
     </br>
     <div class ="centerDivHeader">
-        <h2>Your score for question seven is {{variable}} </h2>
+        <h2>Based on your voice and speech patterns, the program has created a rough score for on your 
+        cognitive health. This is your specific score: {{variable}} </h2>
     </div>
     <br>
     </br>
     <div class = "centerDivForm">
-        <form method=POST enctype=multipart/form-data action ="question8">
+        <form method=POST enctype=multipart/form-data action ="question1">
             <br>
             <input type=submit value ="Next">
         </form>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dementia Detection Development Server - Part One</title>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+
+</head>
+<body>
+     <div class ="centerDivHeader">
+        <h2>Welcome to part one of this process. To begin with, please record an audio file of you speaking about a topic or an experience 
+        that you have recently encountered. This is quote vague, and it can be about anything you like. Some examples include discussing
+        a book or a T.V. show.</h2>
+    </div>
+    <br>
+    </br>
+     <div class ="centerDivHeader">
+        <h2>Once you are done recording, please upload the speech recording below. Ensure that the files are in the
+        .wav audio format. If your file is not in the correct format, there are online resources that can help
+        you convert from ine format to others. Simply search "convery audio file to .wav" online and you will
+        get multiple results.</h2>
+    </div>
+    <br>
+    </br>
+    <div class = "centerDivForm">
+        <p>Part one</p>
+        <form method=POST enctype=multipart/form-data action ="partOneResults">
+            <input type=file name=myFile>
+            <br>
+            <input type=submit>
+        </form>
+    </div>
+    <br>
+    </br>
+    <div class ="centerDivHeader">
+        <h2>Once you press submit, a loading animation will appear in the browser's top bar.
+        This means that the program is analyzing the .wav file and is determining a score for 
+        this part. Please be patient as this process may take up to a full minute. I apologize
+        for the long load times.</h2>
+    </div>
+    
+    
+</body>
+
+</html>
+
+

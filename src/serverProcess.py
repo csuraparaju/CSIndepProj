@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request
+from pydub import AudioSegment,silence
+import wave
+import contextlib
 import boto3
 import os
 from datetime import date
@@ -6,8 +9,10 @@ import inflect
 import requestTranscribeJob as rt
 import re
 import nltk
+import os
 
 app = Flask(__name__)
+partOneScore = 0
 score1 = 0
 score2 = 0
 score4 = 0
@@ -24,7 +29,78 @@ They also compute a score for each question of the MMSE based on the user input 
 def index():
     return render_template("index.html")
 
-@app.route('/question1', methods=['POST'])
+@app.route('/partOne')
+def partOne():
+    return render_template('partOne.html')
+
+@app.route('/partOneResults', methods=['POST'])
+def partOneResults():
+    global partOneScore
+    KEY = 'part1/question1Speech.wav'
+    s3 = boto3.resource('s3')
+    s3.Bucket('cs-proj-bucket').put_object(Key='part1/question1Speech.wav', Body=request.files['myFile'])
+    
+    s3.Bucket('cs-proj-bucket').download_file(KEY, 'localwavFile.wav')
+
+    with contextlib.closing(wave.open('localwavFile.wav','r')) as f:
+        frames = f.getnframes()
+        rate = f.getframerate()
+        duration = frames / float(rate)
+    
+    readAudio = intro = AudioSegment.from_wav('localwavFile.wav')
+    dBFS=readAudio.dBFS
+    silencePos = (silence.detect_silence(readAudio, min_silence_len=1000, silence_thresh=dBFS-16))
+    silencePos = [((start/1000),(stop/1000)) for start,stop in silencePos]
+    
+    totalSecsSilence = 0
+    for start, stop in silencePos:
+        totalSecsSilence += (stop-start)
+    
+    numberOfPauses = len(silencePos)
+    
+    pauseRate = ((totalSecsSilence/duration) * 60)
+    
+    location = boto3.client('s3').get_bucket_location(Bucket='cs-proj-bucket')['LocationConstraint']
+    
+    if location == None: 
+        location = 'us-east-1'
+    url = ""
+    url = "https://s3-%s.amazonaws.com/%s/%s" % (location, "cs-proj-bucket", "part1/question1Speech.wav")
+    
+    speechStringq1 = rt.getResult('part1Speech', url)
+    
+    
+    numWords = len(speechStringq1.split())
+    
+    numWordsPerSec = (numWords/duration)
+    
+    speechRate = ((len(speechStringq1.split()) * numWordsPerSec)/duration) * 60
+
+
+    if(speechRate < 150.00):
+        partOneScore-=5
+    else:
+        partOneScore += 5
+
+    if(pauseRate > (0.68*(speechRate))):
+        partOneScore-=5
+    else:
+        partOneScore+=5
+
+    numGreaterPause = 0
+    for start, stop in silencePos:
+        if(stop - start > 2):
+            numGreaterPause += 1
+    if(numGreaterPause > 0):
+        partOneScore -= 1.50*(numGreaterPause)
+    elif(numGreaterPause == 0):
+        partOneScore = 5
+        
+    os.remove("localwavFile.wav")
+    
+    return render_template('partOneResults.html', variable = partOneScore)
+
+@app.route('/question1', methods=['POST'],)
 def question1():
     return render_template("question1.html")
 
@@ -219,11 +295,10 @@ def question6Score():
 """App route for question seven and its score. The user is asked to repeate a phrase. The sentence must
 be fully accurate for them to recieve a point."""
 
-@app.route('/question7', methods=['POST'])
+@app.route('/question7')
 def question7():
     return render_template("question7.html")
-    
-@app.route('/question7Score', methods=['POST'])
+@app.route('/question7Score')
 def question7Score():
     global score7
     s3 = boto3.resource('s3')
@@ -239,13 +314,14 @@ def question7Score():
     correctPhrase = "No ifs ands or buts" 
     if(correctPhrase in speechString7):
         score7+=1    
+        
     return render_template('question7Score.html', variable = score7)
     
 """App route for question eight and its score. The user is come up with a sentence. This sentence
 must contain a noun and a verb for it to our. First occurance of each part of speech is award one point.
 The NLTK module is used to tag the words in the sentence with its part of speech."""
 
-@app.route('/question8', methods=['POST'])
+@app.route('/question8')
 def question8():
     return render_template("question8.html")
 @app.route('/question8Score', methods=['POST'])
