@@ -12,10 +12,10 @@ will be the sum of score for part 1 and part 2.
 
 
 # Dependencies:
-   • Aws Boto3 library
-   • Flask Web Application Framework
-   • Inflect Engine
-   • Natural Language Toolkit (NLTK)
-   • Pydub 
+   • Aws Boto3 library\
+   • Flask Web Application Framework\
+   • Inflect Engine\
+   • Natural Language Toolkit (NLTK)\
+   • Pydub\
 
 Note: The user interface for this program is still a work in progress. Check back later to view the final version.
